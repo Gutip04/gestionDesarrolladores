@@ -7,11 +7,11 @@ const port = process.env.PORT || 3000;
 app.use(express.json())
 
 app.get("/", (req,res) => {
-    res.json({ message: "server in running"})
+    res.json({ message: "serve in running"})
 })
 
 app.listen(port, () => {
-    console.log(`serve is running on port ${port}`);
+    console.log(`server is running on port ${port}`);
     
 })
 
