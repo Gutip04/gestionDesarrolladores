@@ -1,4 +1,4 @@
-import mysql from "mysql2"
+import mysql from "mysql2/promise"
 import dotenv from "dotenv"
 
 dotenv.config()
@@ -24,9 +24,10 @@ if (
 
 export const db = mysql.createPool({
     host: DB_HOST,
-    user: DB_NAME,
+    user: DB_USER,
     port: parseInt(process.env.DB_PORT, 80),
     password: DB_PASS ?? '',
+    database: DB_NAME,
     multipleStatements: true
 
 })
