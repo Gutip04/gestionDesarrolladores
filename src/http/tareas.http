@@ -1,0 +1,50 @@
+@host = http://localhost:3000
+@tokenAdmin = pega_aqui_el_token_jwt_de_admin
+@tokenJunior = pega_aqui_el_token_jwt_de_junior
+### 1. Obtener todas las tareas (Acceso permitido para cualquier usuario)
+GET {{host}}/api/tareas
+Authorization: Bearer {{tokenJunior}}
+
+### 2. Crear una nueva tarea (Permitido solo para Admin)
+POST {{host}}/api/tareas
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "titulo": "Implementar JWT en Rutas",
+  "descripcion": "Proteger los endpoints mediante verificarToken y esAdmin",
+  "estado": "pendiente",
+  "prioridad": "alta",
+  "fecha_limite": "2026-10-30 18:00:00",
+  "id_usuario_asignado": 2,
+  "id_equipo": 1
+}
+
+### 3. Prueba de Seguridad: Intentar crear tarea siendo Junior (Debe devolver 403 Forbidden)
+POST {{host}}/api/tareas
+Authorization: Bearer {{tokenJunior}}
+Content-Type: application/json
+
+{
+  "titulo": "Intento no autorizado",
+  "descripcion": "Prueba de bloqueo por falta de rol Admin"
+}
+
+### 4. Actualizar una tarea (Solo Admin)
+PUT {{host}}/api/tareas/1
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "titulo": "Implementar JWT en Rutas - FINALIZADO",
+  "descripcion": "Endpoints probados y funcionando",
+  "estado": "completada",
+  "prioridad": "alta",
+  "fecha_limite": "2026-10-30 18:00:00",
+  "id_usuario_asignado": 2,
+  "id_equipo": 1
+}
+
+### 5. Eliminar una tarea (Solo Admin)
+DELETE {{host}}/api/tareas/1
+Authorization: Bearer {{tokenAdmin}}

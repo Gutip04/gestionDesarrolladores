@@ -1,0 +1,34 @@
+@host = http://localhost:3000
+@tokenAdmin = pega_aqui_el_token_jwt_de_admin
+@tokenJunior = pega_aqui_el_token_jwt_de_junior
+### 1. Obtener todos los equipos (Permitido para cualquier usuario autenticado)
+GET {{host}}/api/equipos
+Authorization: Bearer {{tokenJunior}}
+
+### 2. Obtener un equipo por su ID
+GET {{host}}/api/equipos/1
+Authorization: Bearer {{tokenJunior}}
+
+### 3. Crear un nuevo equipo de desarrollo (Solo Admin)
+POST {{host}}/api/equipos
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "nombre_equipo": "Frontend Core",
+  "descripcion": "Equipo encargado del desarrollo de la interfaz pública"
+}
+
+### 4. Actualizar datos de un equipo (Solo Admin)
+PUT {{host}}/api/equipos/1
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "nombre_equipo": "Frontend & UI Core",
+  "descripcion": "Equipo enfocado en arquitecturas de diseño e interfaces"
+}
+
+### 5. Eliminar un equipo (Solo Admin)
+DELETE {{host}}/api/equipos/1
+Authorization: Bearer {{tokenAdmin}}

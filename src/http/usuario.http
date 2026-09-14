@@ -1,0 +1,55 @@
+@host = http://localhost:3000
+@tokenAdmin = pega_aqui_el_token_jwt_de_admin
+@tokenJunior = pega_aqui_el_token_jwt_de_junior
+
+### 1. Obtener todos los usuarios (Permitido para cualquier usuario autenticado)
+GET {{host}}/api/usuarios
+Authorization: Bearer {{tokenJunior}}
+
+### 2. Obtener un usuario por su ID
+GET {{host}}/api/usuarios/2
+Authorization: Bearer {{tokenJunior}}
+
+### 3. Crear un nuevo usuario / desarrollador (Solo Admin)
+POST {{host}}/api/usuarios
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "apellido": "Martínez",
+  "email": "ana.martinez@empresa.com",
+  "password": "Password123!",
+  "id_rol": 2,
+  "activo": true
+}
+
+### 4. Prueba de Seguridad: Intentar crear usuario siendo Junior (Debe responder 403)
+POST {{host}}/api/usuarios
+Authorization: Bearer {{tokenJunior}}
+Content-Type: application/json
+
+{
+  "nombre": "Hack",
+  "apellido": "User",
+  "email": "hack@empresa.com",
+  "password": "Password123!",
+  "id_rol": 1
+}
+
+### 5. Actualizar información de un usuario (Solo Admin)
+PUT {{host}}/api/usuarios/2
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "apellido": "Gómez Promovido",
+  "email": "carlos.gomez@empresa.com",
+  "id_rol": 3,
+  "activo": true
+}
+
+### 6. Desactivar / Eliminar un usuario (Solo Admin)
+DELETE {{host}}/api/usuarios/2
+Authorization: Bearer {{tokenAdmin}}

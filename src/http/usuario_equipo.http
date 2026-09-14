@@ -1,0 +1,25 @@
+@host = http://localhost:3000
+@tokenAdmin = pega_aqui_el_token_jwt_de_admin
+@tokenJunior = pega_aqui_el_token_jwt_de_junior
+
+### 1. Consultar todas las asignaciones (Permitido para todos)
+GET {{host}}/api/usuario-equipo
+Authorization: Bearer {{tokenJunior}}
+
+### 2. Consultar equipos de un usuario específico (Permitido para todos)
+GET {{host}}/api/usuario-equipo/usuario/2
+Authorization: Bearer {{tokenJunior}}
+
+### 3. Asignar un usuario a un equipo (Solo Admin)
+POST {{host}}/api/usuario-equipo
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "id_usuario": 2,
+  "id_equipo": 1
+}
+
+### 4. Desasignar usuario de un equipo por id_usuario_equipo (Solo Admin)
+DELETE {{host}}/api/usuario-equipo/1
+Authorization: Bearer {{tokenAdmin}}

@@ -1,0 +1,17 @@
+@host = http://localhost:3000
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjozLCJpZF9yb2wiOjEsImlhdCI6MTc4OTQwMTk3OCwiZXhwIjoxNzg5NDMwNzc4fQ.oj6axjjBKLzwHkY-38BxVC96sc2muVKobQQCLB4Agnw
+@tokenJunior = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjozLCJpZF9yb2wiOjEsImlhdCI6MTc4OTQwMTk3OCwiZXhwIjoxNzg5NDMwNzc4fQ.oj6axjjBKLzwHkY-38BxVC96sc2muVKobQQCLB4Agnw
+
+### 1. Obtener listado de roles
+GET {{host}}/api/roles
+Authorization: Bearer {{tokenJunior}}
+
+### 2. Crear un nuevo rol (Solo Admin)
+POST {{host}}/api/roles
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "nombre_rol": "lead_tech",
+  "descripcion": "Líder técnico del proyecto"
+}
