@@ -7,8 +7,8 @@ POST {{host}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "admin@empresa.com",
-  "password": "Admin123!"
+  "email": "Jero123@adminn.com",
+  "password": "123456789"
 }
 
 ### 2. Login como Usuario Junior / Dev (id_rol = 2)
