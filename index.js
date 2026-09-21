@@ -6,11 +6,12 @@ import  equipoRoutes  from "./src/routes/EquipoRoutes.js"
 import  usuarioEquipoRoutes from "./src/routes/UsuarioEquipoRoutes.js"
 import  tareaRoutes from "./src/routes/TareaRoutes.js"
 import  authRoutes from "./src/routes/AuthRoutes.js"
+import cors from "cors"
 
 const app = express()
 
 const port = process.env.PORT || 3000;
-
+app.use(cors())
 app.use(express.json())
 app.use("/api/usuarios",usuarioRoutes )
 app.use('/api/roles', rolRoutes);
