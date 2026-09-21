@@ -1,12 +1,24 @@
 import express from "express"
 import "dotenv/config"
-import rolesRouter from "./src/routes/rolesRoutes.js";
+import usuarioRoutes from "./src/routes/UsuarioRoutes.js";
+import  rolRoutes  from "./src/routes/RolRoutes.js"
+import  equipoRoutes  from "./src/routes/EquipoRoutes.js"
+import  usuarioEquipoRoutes from "./src/routes/UsuarioEquipoRoutes.js"
+import  tareaRoutes from "./src/routes/TareaRoutes.js"
+import  authRoutes from "./src/routes/AuthRoutes.js"
+import cors from "cors"
+
 const app = express()
 
 const port = process.env.PORT || 3000;
-
+app.use(cors())
 app.use(express.json())
-app.use("/api", rolesRouter)
+app.use("/api/usuarios",usuarioRoutes )
+app.use('/api/roles', rolRoutes);
+app.use('/api/equipos', equipoRoutes);
+app.use('/api/usuario-equipo', usuarioEquipoRoutes);
+app.use('/api/tareas', tareaRoutes);
+app.use('/api/auth', authRoutes);
 
 
 

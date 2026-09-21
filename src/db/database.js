@@ -22,7 +22,7 @@ if (
     throw new Error('1 o mas variables de entorno no estan definidas');
 }
 
-export const db = mysql.createPool({
+export const pool = mysql.createPool({
     host: DB_HOST,
     user: DB_USER,
     port: parseInt(process.env.DB_PORT, 80),

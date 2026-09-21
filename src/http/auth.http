@@ -1,0 +1,22 @@
+### Variables
+@host = http://localhost:3000
+
+### 1. Login como Administrador (id_rol = 1)
+# @name loginAdmin
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "Jero123@adminn.com",
+  "password": "123456789"
+}
+
+### 2. Login como Usuario Junior / Dev (id_rol = 2)
+# @name loginJunior
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "carlos.gomez@empresa.com",
+  "password": "User123!"
+}
